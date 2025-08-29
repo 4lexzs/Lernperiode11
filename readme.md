@@ -4,16 +4,19 @@
 
 ## Grob-Planung
 
-1. Erklären Sie Ihre Projekt-Idee in einem Satz, als müssen Sie einen Investor davon überzeugen.
-2. Erklären Sie, welche technischen Herausforderungen Sie in Ihrem Projekt erwarten.
-3. Beschreiben Sie, welche nicht-technischen Aspekte Sie in diesem Projekt besonders üben möchten.
-4. Wie unterscheidet sich dieses Projekt von Ihrem Projekt in 335; und wo ergänzen sich diese Projekte?
+1. Fitness-Timer App - einfacher Timer für Training mit Start/Stop und Zeitanzeige.
+
+2. Timer programmieren, Daten auf Handy speichern, einfache Buttons erstellen.
+
+3. Benutzerfreundlichkeit und saubere Dokumentation für Bewerbung.
+
+4. LP11: lokale Timer-App, 335: noch nicht entschieden.
 
 ## 22.8
 
-- [ ] Arbeitspaket 1: Erstellen Sie ein Projekt und beginnen Sie mir ersten Code-Skizzen. Das ist wichtig, Sie müssen heute bereits schon C#-Code hochladen!
-- [ ] Arbeitspaket 2 (Falls Sie den *maker space* besuchen, dann dürfen Sie diesen Punkt löschen. Ansonsten fügen Sie hier ein weiteres AP ein).
-- [ ] Arbeitspaket 3
+- [X] Projekt erstellen und ersten Code schreiben
+- [X] Timer-Funktion programmieren
+- [X] Layout skizzieren, wie die App aussehen soll
 
 ✍️ Heute habe ich... (50-100 Wörter)
 
@@ -21,11 +24,12 @@
 
 ## 29.8
 
-- [ ] Arbeitspaket 1
-- [ ] Arbeitspaket 2
-- [ ] Arbeitspaket 3 
-- [ ] Arbeitspaket 4
+- [ ] Als Benutzer möchte ich einen Timer starten und stoppen können.
+- [ ] Als Benutzer möchte ich die Zeit deutlich sehen während sie läuft.
+- [ ] Als Benutzer möchte ich verschiedene Timer-Zeiten einstellen können.
+- [ ] Als Benutzer möchte ich dass die App meine letzten Timer-Zeiten speichert.
 
 ✍️ Heute habe ich... (50-100 Wörter)
 
 ☝️ Vergessen Sie nicht, Ihren Code auf github hochzuladen
+
