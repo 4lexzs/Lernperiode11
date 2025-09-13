@@ -2,61 +2,151 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FitnessTimer.MainPage"
-             Title="Fitness Timer">
+             Title="Fitness Timer"
+             BackgroundColor="#1a1a1a">
 
     <ScrollView>
-        <VerticalStackLayout Spacing="25" Padding="30,0" VerticalOptions="Center">
-
+        <VerticalStackLayout Spacing="20" Padding="20" VerticalOptions="Center">
+            
             <!-- Titel -->
             <Label x:Name="WelcomeLabel"
-                   Text="Fitness Timer"
-                   FontSize="32"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center" />
-
-            <!-- Timer Anzeige -->
-            <Label x:Name="TimerDisplay"
-                   Text="00:00"
-                   FontSize="48"
+                   Text="Fitness Timer Pro"
+                   FontSize="36"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"
-                   TextColor="Blue" />
+                   TextColor="#00ff88" />
+
+            <!-- Timer Anzeige -->
+            <Frame BackgroundColor="#2d2d2d" 
+                   CornerRadius="15"
+                   Padding="20"
+                   HasShadow="True">
+                <Label x:Name="TimerDisplay"
+                       Text="00:00"
+                       FontSize="56"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       TextColor="#00ff88" />
+            </Frame>
 
             <!-- Zeit eingeben -->
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <Label Text="Minuten:" VerticalOptions="Center" />
-                <Entry x:Name="MinutesEntry" 
-                       Text="5" 
-                       Keyboard="Numeric" 
-                       WidthRequest="60" />
-                <Label Text="Sekunden:" VerticalOptions="Center" />
-                <Entry x:Name="SecondsEntry" 
-                       Text="0" 
-                       Keyboard="Numeric" 
-                       WidthRequest="60" />
-            </StackLayout>
+            <Frame BackgroundColor="#2d2d2d" 
+                   CornerRadius="10"
+                   Padding="15">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Min:" 
+                               VerticalOptions="Center" 
+                               TextColor="White"
+                               FontSize="16" />
+                        <Entry x:Name="MinutesEntry" 
+                               Text="5" 
+                               Keyboard="Numeric" 
+                               WidthRequest="80"
+                               BackgroundColor="#404040"
+                               TextColor="White"
+                               PlaceholderColor="#888888" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="20,0,0,0">
+                        <Label Text="Sek:" 
+                               VerticalOptions="Center" 
+                               TextColor="White"
+                               FontSize="16" />
+                        <Entry x:Name="SecondsEntry" 
+                               Text="0" 
+                               Keyboard="Numeric" 
+                               WidthRequest="80"
+                               BackgroundColor="#404040"
+                               TextColor="White"
+                               PlaceholderColor="#888888" />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
 
             <!-- Buttons -->
-            <Button x:Name="StartButton"
-                    Text="Start"
-                    FontSize="18"
-                    BackgroundColor="Green"
-                    TextColor="White"
-                    Clicked="OnStartClicked" />
+            <StackLayout Spacing="10">
+                <Button x:Name="StartButton"
+                        Text="Start"
+                        FontSize="20"
+                        BackgroundColor="#00ff88"
+                        TextColor="Black"
+                        HeightRequest="50"
+                        CornerRadius="25"
+                        Clicked="OnStartClicked" />
 
-            <Button x:Name="StopButton"
-                    Text="Stop"
-                    FontSize="18"
-                    BackgroundColor="Red"
-                    TextColor="White"
-                    Clicked="OnStopClicked" />
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Button x:Name="StopButton"
+                            Text="Stop"
+                            FontSize="18"
+                            BackgroundColor="#ff4444"
+                            TextColor="White"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="45"
+                            CornerRadius="20"
+                            Clicked="OnStopClicked" />
 
-            <Button x:Name="ResetButton"
-                    Text="Reset"
-                    FontSize="18"
-                    BackgroundColor="Orange"
-                    TextColor="White"
-                    Clicked="OnResetClicked" />
+                    <Button x:Name="ResetButton"
+                            Text="Reset"
+                            FontSize="18"
+                            BackgroundColor="#ff8800"
+                            TextColor="White"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="45"
+                            CornerRadius="20"
+                            Clicked="OnResetClicked" />
+                </StackLayout>
+            </StackLayout>
+
+            <!-- Timer Historie -->
+            <Frame BackgroundColor="#2d2d2d" 
+                   CornerRadius="10"
+                   Padding="15"
+                   Margin="0,20,0,0">
+                <StackLayout>
+                    <Label Text="Timer Historie"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="#00ff88"
+                           HorizontalOptions="Center"
+                           Margin="0,0,0,10" />
+                    
+                    <CollectionView x:Name="HistoryCollectionView"
+                                    HeightRequest="200"
+                                    BackgroundColor="Transparent">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="10" 
+                                      RowDefinitions="Auto,Auto"
+                                      ColumnDefinitions="*,Auto">
+                                    <Label Grid.Row="0" Grid.Column="0"
+                                           Text="{Binding TimeText}"
+                                           TextColor="White"
+                                           FontSize="16"
+                                           FontAttributes="Bold" />
+                                    <Label Grid.Row="1" Grid.Column="0"
+                                           Text="{Binding DateText}"
+                                           TextColor="#888888"
+                                           FontSize="12" />
+                                    <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="1"
+                                           Text="🏃‍♂️"
+                                           FontSize="20"
+                                           VerticalOptions="Center" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    
+                    <Button x:Name="ClearHistoryButton"
+                            Text="Historie löschen"
+                            FontSize="14"
+                            BackgroundColor="#666666"
+                            TextColor="White"
+                            HeightRequest="35"
+                            CornerRadius="15"
+                            Margin="0,10,0,0"
+                            Clicked="OnClearHistoryClicked" />
+                </StackLayout>
+            </Frame>
 
         </VerticalStackLayout>
     </ScrollView>
