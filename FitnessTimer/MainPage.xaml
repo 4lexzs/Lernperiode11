@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FitnessTimer.MainPage"
-             Title="Fitness Timer"
+             Title="Timer Pro"
              BackgroundColor="#1a1a1a">
 
     <ScrollView>
@@ -10,61 +10,127 @@
             
             <!-- Titel -->
             <Label x:Name="WelcomeLabel"
-                   Text="Fitness Timer Pro"
+                   Text="Timer Pro"
                    FontSize="36"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"
                    TextColor="#00ff88" />
 
+            <!-- Workout Vorlagen -->
+            <Border BackgroundColor="#2d2d2d" 
+                    StrokeThickness="0"
+                    Stroke="Transparent"
+                    Padding="15">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <VerticalStackLayout>
+                    <Label Text="Workout-Vorlagen"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="#00ff88"
+                           HorizontalOptions="Center"
+                           Margin="0,0,0,10" />
+                    
+                    <Picker x:Name="WorkoutPicker"
+                            Title="Workout wählen..."
+                            BackgroundColor="#404040"
+                            TextColor="White"
+                            TitleColor="#888888"
+                            SelectedIndexChanged="OnWorkoutSelected" />
+                    
+                    <Label x:Name="WorkoutDescriptionLabel"
+                           Text=""
+                           FontSize="12"
+                           TextColor="#888888"
+                           HorizontalOptions="Center"
+                           Margin="0,5,0,0" />
+                </VerticalStackLayout>
+            </Border>
+
             <!-- Timer Anzeige -->
-            <Frame BackgroundColor="#2d2d2d" 
-                   CornerRadius="15"
-                   Padding="20"
-                   HasShadow="True">
-                <Label x:Name="TimerDisplay"
-                       Text="00:00"
-                       FontSize="56"
-                       FontAttributes="Bold"
-                       HorizontalOptions="Center"
-                       TextColor="#00ff88" />
-            </Frame>
+            <Border BackgroundColor="#2d2d2d" 
+                    StrokeThickness="0"
+                    Stroke="Transparent"
+                    Padding="20">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="15"/>
+                </Border.StrokeShape>
+                <VerticalStackLayout>
+                    <Label x:Name="TimerModeLabel"
+                           Text="Training"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           TextColor="#00ff88"
+                           Margin="0,0,0,10" />
+                    
+                    <Label x:Name="TimerDisplay"
+                           Text="00:00"
+                           FontSize="56"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           TextColor="#00ff88" />
+                    
+                    <Label x:Name="RoundCounterLabel"
+                           Text=""
+                           FontSize="14"
+                           HorizontalOptions="Center"
+                           TextColor="#888888"
+                           Margin="0,10,0,0" />
+                </VerticalStackLayout>
+            </Border>
 
             <!-- Zeit eingeben -->
-            <Frame BackgroundColor="#2d2d2d" 
-                   CornerRadius="10"
-                   Padding="15">
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Min:" 
+            <Border BackgroundColor="#2d2d2d" 
+                    StrokeThickness="0"
+                    Stroke="Transparent"
+                    Padding="15">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Manuelle Eingabe"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#00ff88"
+                           HorizontalOptions="Center" />
+                    
+                    <Grid ColumnDefinitions="Auto,*,Auto,*" 
+                          HorizontalOptions="Center" 
+                          ColumnSpacing="10">
+                        <Label Grid.Column="0"
+                               Text="Min:" 
                                VerticalOptions="Center" 
                                TextColor="White"
                                FontSize="16" />
-                        <Entry x:Name="MinutesEntry" 
+                        <Entry Grid.Column="1"
+                               x:Name="MinutesEntry" 
                                Text="5" 
                                Keyboard="Numeric" 
                                WidthRequest="80"
                                BackgroundColor="#404040"
                                TextColor="White"
                                PlaceholderColor="#888888" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal" Margin="20,0,0,0">
-                        <Label Text="Sek:" 
+                        <Label Grid.Column="2"
+                               Text="Sek:" 
                                VerticalOptions="Center" 
                                TextColor="White"
                                FontSize="16" />
-                        <Entry x:Name="SecondsEntry" 
+                        <Entry Grid.Column="3"
+                               x:Name="SecondsEntry" 
                                Text="0" 
                                Keyboard="Numeric" 
                                WidthRequest="80"
                                BackgroundColor="#404040"
                                TextColor="White"
                                PlaceholderColor="#888888" />
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
 
             <!-- Buttons -->
-            <StackLayout Spacing="10">
+            <VerticalStackLayout Spacing="10">
                 <Button x:Name="StartButton"
                         Text="Start"
                         FontSize="20"
@@ -74,35 +140,39 @@
                         CornerRadius="25"
                         Clicked="OnStartClicked" />
 
-                <StackLayout Orientation="Horizontal" Spacing="10">
-                    <Button x:Name="StopButton"
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                    <Button Grid.Column="0"
+                            x:Name="StopButton"
                             Text="Stop"
                             FontSize="18"
                             BackgroundColor="#ff4444"
                             TextColor="White"
-                            HorizontalOptions="FillAndExpand"
                             HeightRequest="45"
                             CornerRadius="20"
                             Clicked="OnStopClicked" />
 
-                    <Button x:Name="ResetButton"
+                    <Button Grid.Column="1"
+                            x:Name="ResetButton"
                             Text="Reset"
                             FontSize="18"
                             BackgroundColor="#ff8800"
                             TextColor="White"
-                            HorizontalOptions="FillAndExpand"
                             HeightRequest="45"
                             CornerRadius="20"
                             Clicked="OnResetClicked" />
-                </StackLayout>
-            </StackLayout>
+                </Grid>
+            </VerticalStackLayout>
 
             <!-- Timer Historie -->
-            <Frame BackgroundColor="#2d2d2d" 
-                   CornerRadius="10"
-                   Padding="15"
-                   Margin="0,20,0,0">
-                <StackLayout>
+            <Border BackgroundColor="#2d2d2d" 
+                    StrokeThickness="0"
+                    Stroke="Transparent"
+                    Padding="15"
+                    Margin="0,20,0,0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <VerticalStackLayout>
                     <Label Text="Timer Historie"
                            FontSize="18"
                            FontAttributes="Bold"
@@ -127,10 +197,6 @@
                                            Text="{Binding DateText}"
                                            TextColor="#888888"
                                            FontSize="12" />
-                                    <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="1"
-                                           Text="🏃‍♂️"
-                                           FontSize="20"
-                                           VerticalOptions="Center" />
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
@@ -145,8 +211,8 @@
                             CornerRadius="15"
                             Margin="0,10,0,0"
                             Clicked="OnClearHistoryClicked" />
-                </StackLayout>
-            </Frame>
+                </VerticalStackLayout>
+            </Border>
 
         </VerticalStackLayout>
     </ScrollView>
