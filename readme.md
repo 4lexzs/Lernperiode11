@@ -25,7 +25,7 @@
 - [x] Als Benutzer möchte ich einen Timer starten und stoppen können, damit ich mein Training kontrolliert durchführen kann.
 - [x] Als Benutzer möchte ich die Zeit deutlich sehen während sie läuft, damit ich weiß wie viel Zeit noch bleibt.
 - [x] Als Benutzer möchte ich verschiedene Timer-Zeiten einstellen können, damit ich verschiedene Übungen unterschiedlich lang timen kann.
-- [ ] Als Benutzer möchte ich dass die App meine letzten Timer-Zeiten speichert, damit ich meine gewohnten Zeiten schnell wieder verwenden kann.
+- [X] Als Benutzer möchte ich dass die App meine letzten Timer-Zeiten speichert, damit ich meine gewohnten Zeiten schnell wieder verwenden kann.
 
 ✍️ Heute habe ich die komplette Timer-App programmiert und zum Laufen gebracht. Mit MainPage.xaml für die Benutzeroberfläche und MainPage.xaml.cs für die Timer-Logik konnte ich alle grundlegenden Funktionen implementieren. Die App hat Start/Pause/Stop/Reset-Buttons, Eingabefelder für Minuten und Sekunden sowie eine Countdown-Anzeige mit Farbwechsel. Der Timer läuft zuverlässig und alle Buttons funktionieren. Nur das Speichern von Timer-Zeiten konnte ich noch nicht umsetzen - das verschiebe ich auf nächste Woche.
 
@@ -48,3 +48,4 @@
 - [x] Als Entwickler möchte ich meinen Code aufräumen und kommentieren, damit der Code verständlich und wartbar bleibt.
 
 ✍️ Heute habe ich die Benutzeroberfläche meiner Timer-App deutlich verbessert und professioneller gestaltet. Ich habe neue Farben und ein besseres Layout implementiert, wodurch die App viel ansprechender wirkt. Außerdem konnte ich erfolgreich Sound-Benachrichtigungen hinzufügen, sodass Benutzer jetzt akustisch informiert werden wenn der Timer abläuft. Die größte Herausforderung war die Implementierung der Timer-Historie, bei der gespeicherte Zeiten in einer scrollbaren Liste angezeigt werden. Zusätzlich habe ich meinen Code überarbeitet, sinnvolle Kommentare hinzugefügt und die Struktur verbessert für bessere Wartbarkeit.
+
